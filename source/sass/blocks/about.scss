@@ -1,0 +1,142 @@
+.about {
+  height: 100vh;
+  height: calc(100 * var(--vh, 1vh));
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin: 0 auto;
+    padding: 174px 35px 0;
+    width: 100%;
+    max-width: $viewport--lg;
+
+    &--fadein {
+      animation: fade cubic-bezier(0.4, 0, 1, 1) 0.5s;
+    }
+
+    @include viewport--lg {
+      padding: 120px 35px 0;
+    }
+
+    @include viewport--md {
+      align-items: flex-start;
+      padding: 0;
+    }
+
+    &--nojs {
+      @include viewport--md {
+        flex-direction: column;
+
+        .about__info {
+          position: relative;
+          left: 0;
+
+          padding: 120px calc(50% - 176px) 170px;
+          margin-top: 100px;
+          height: auto;
+
+          animation: none;
+        }
+      }
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    margin: 0;
+    margin-top: 72px;
+    width: 562px;
+
+    font-size: 96px;
+    line-height: 96px;
+    font-weight: 400;
+    color: $color-neon-blue;
+
+    @include viewport--md {
+      margin-left: 35px;
+      margin-top: 274px;
+    }
+  }
+
+  &__letter {
+    &--blink {
+      animation: blink 2s linear forwards;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 352px;
+
+    @include viewport--md {
+      display: flex;
+      position: absolute;
+      left: -100%;
+
+      padding: 234px calc(50% - 176px) 0;
+      width: 100%;
+      height: 100vh;
+      height: calc(100 * var(--vh, 1vh));
+
+      color: $color-default-white;
+      background-color: $color-neon-blue;
+
+      transition: ease 1s;
+
+      .dino-click {
+        fill: $color-default-white;
+      }
+
+      &--clicked {
+        left: 0;
+
+        .dino-click:nth-last-child(1) {
+          animation: flicker 1.5s linear forwards;
+          animation-delay: 1.3s;
+        }
+
+        .dino-click:nth-last-child(3) {
+          animation: flicker 1s linear forwards;
+          animation-delay: 1.4s;
+        }
+
+        .dino-click:nth-last-child(4) {
+          animation: flicker 1s linear forwards;
+          animation-delay: 1.2s;
+        }
+
+        .dino-click:nth-child(1) {
+          animation: flicker 1s linear forwards;
+          animation-delay: 1.6s;
+        }
+      }
+    }
+  }
+
+  &__text {
+    margin: 0;
+    margin-top: 35px;
+    width: 100%;
+
+    font-size: 30px;
+    line-height: 40px;
+  }
+}

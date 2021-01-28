@@ -1,0 +1,96 @@
+.loader {
+  position: absolute;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+  height: calc(100 * var(--vh, 1vh));
+  background-color: $color-default-white;
+
+  &--nojs {
+    display: none;
+  }
+
+  &--clicked {
+    .loader__text {
+      animation: fadeout cubic-bezier(0.4, 0, 1, 1) 1s;
+    }
+
+    .loader__logo svg {
+      .logo-group1 {
+        animation: leftout cubic-bezier(0.4, 0, 1, 1) 1s;
+      }
+
+      .logo-group2 {
+        animation: upout cubic-bezier(0.4, 0, 1, 1) 1s;
+      }
+
+      .logo-group3 {
+        animation: rightout cubic-bezier(0.4, 0, 1, 1) 1s;
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    svg {
+      overflow: visible;
+
+      @include viewport--md {
+        width: 550px;
+        height: 70px;
+      }
+
+      .logo-group1 {
+        animation: leftin cubic-bezier(0.4, 0, 1, 1) 0.5s;
+      }
+
+      .logo-group2 {
+        animation: upin cubic-bezier(0.4, 0, 1, 1) 0.5s;
+      }
+
+      .logo-group3 {
+        animation: rightin cubic-bezier(0.4, 0, 1, 1) 0.5s;
+      }
+    }
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    display: block;
+    margin-bottom: 100px;
+    margin-left: -112px;
+    width: 224px;
+
+    font-size: 24px;
+    line-height: 28px;
+    animation: fadein cubic-bezier(0.4, 0, 1, 1) 1s;
+    user-select: none;
+
+    @include viewport--lg {
+      display: none;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &--touch {
+      display: none;
+
+      @include viewport--lg {
+        display: block;
+      }
+    }
+  }
+}
